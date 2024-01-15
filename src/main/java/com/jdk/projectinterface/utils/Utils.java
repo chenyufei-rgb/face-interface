@@ -19,22 +19,31 @@ public class Utils {
      * @param path2 考勤图片地址
      * @return 2：成功 1：失败
      */
-    public static Integer doIdentify(String path1,String path2){
+    public static Integer doIdentify(String path1, String path2) {
+        System.out.println("调用人脸识别");
         StringBuffer sb = new StringBuffer();
         try {
-            String[] args = new String[]{"C:\\Users\\cheny\\AppData\\Local\\Programs\\Python\\Python39\\python.exe","C:\\Users\\cheny\\Desktop\\人脸识别\\人脸识别\\main.py" , path1 , path2};
+            String[] args = new String[]{"C:\\Users\\cheny\\AppData\\Local\\Programs\\Python\\Python39\\python.exe", "C:\\Users\\cheny\\Desktop\\人脸识别\\人脸识别\\main.py", path1, path2};
             Process process = Runtime.getRuntime().exec(args);
             process.waitFor();
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
                 sb.append(line);
+                System.out.println("这是人脸识别的分析：" + line);
             }
             in.close();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return Integer.valueOf(String.valueOf(sb));
+
+        // 检查字符串缓冲区是否为空或只包含空白字符
+        if (sb.toString().trim().isEmpty()) {
+            System.out.println("字符串缓冲区为空或只包含空白字符");
+            return null; // 或者你可以返回一个默认值，例如0或者-1
+        } else {
+            return Integer.valueOf(sb.toString());
+        }
     }
 
     /**

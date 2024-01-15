@@ -2,6 +2,7 @@ package com.jdk.projectinterface.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jdk.projectinterface.bean.*;
+import com.jdk.projectinterface.bean.Record;
 import com.jdk.projectinterface.common.ServiceResponse;
 import com.jdk.projectinterface.mapper.CourseStudentMapper;
 import com.jdk.projectinterface.mapper.RecordMapper;

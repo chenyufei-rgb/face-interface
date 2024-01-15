@@ -34,8 +34,8 @@ public class RecordController {
          * 从数据库查看当前学生的人脸信息位置，并与签到上传的图片进行比对识别，返回true或false
          * 先默认始终为真
          */
-        String path2 = "src/main/resources/static/check/" + studentId + "_" + attendId + ".png";
-        String path1 = "src/main/resources/static/face/" + studentId + ".png";
+        String path2 = "C:/Users/cheny/Desktop/project-interface-main/src/main/resources/static/check/" + studentId + "_" + attendId + ".png";
+        String path1 = "C:/Users/cheny/Desktop/project-interface-main/src/main/resources/static/face/" + studentId + ".png";
         String path = "/image/check/" + studentId + "_" + attendId + ".png";
         Integer result = Utils.doIdentify(path1, path2);
         System.out.println("confidence = " + result);

@@ -16,7 +16,7 @@ public class AccountController {
 
     /**
      * 用户登录
-      * @param type 用户角色
+     * @param type 用户角色
      * @param account 账号
      * @param password 密码
      * @return 登录成功返回用户信息，失败返回code401
@@ -117,6 +117,7 @@ public class AccountController {
             @RequestParam(value = "email",required = false) String email,
             @RequestParam(value = "avatar",required = false) String avatar
     ){
+        System.out.println("修改教师信息");
         ServiceResponse<Teacher> response;
         Teacher teacher = new Teacher(adminId,account,password,name,sex,phone,email,avatar);
         teacher.setTeacherId(teacherId);
@@ -137,6 +138,7 @@ public class AccountController {
             @RequestParam(value = "phone",required = false) String phone,
             @RequestParam(value = "email",required = false) String email
     ){
+        System.out.println("修改学生信息");
         ServiceResponse<Student> response;
         Student student = new Student(account,password,name,sex,avatar,classname,phone,email);
         student.setStudentId(studentId);
@@ -188,7 +190,7 @@ public class AccountController {
     public Object confirmAccount(
             @RequestParam("type") Integer type,
             @RequestParam("account") String account,
-            @RequestParam(value = "phone",required = false) String phone
+            @RequestParam(value = "phone", required = false) String phone
     ){
         if(phone.isEmpty()) {
             return accountService.confirmAccount(type, account);
